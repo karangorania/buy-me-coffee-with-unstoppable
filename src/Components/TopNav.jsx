@@ -19,7 +19,7 @@ export const TopNav = () => {
   const loginHandler = async () => {
     try {
       const authorization = await uauth.loginWithPopup();
-
+      setIsLogin(true)
       console.log(authorization);
     } catch (error) {
       console.error(error);

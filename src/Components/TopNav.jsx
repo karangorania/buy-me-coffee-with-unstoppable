@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { useState, useEffect } from 'react';
 import UAuth from '@uauth/js';
@@ -17,6 +18,7 @@ export const TopNav = () => {
   });
 
   const loginHandler = async () => {
+    setIsLogin(true);
     try {
       const authorization = await uauth.loginWithPopup();
 

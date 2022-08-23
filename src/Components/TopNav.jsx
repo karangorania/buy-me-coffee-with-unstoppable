@@ -14,7 +14,7 @@ export const TopNav = () => {
   }, [isLogin]);
 
   const uauth = new UAuth({
-    clientID: 'ba816047-d507-4f7d-a8ac-e801f309bc21',
+    clientID: process.env.REACT_APP_CLIENT_ID,
     redirectUri: 'http://localhost:3000',
     scope: 'openid wallet',
   });
@@ -23,19 +23,17 @@ export const TopNav = () => {
     setIsLogin(true);
     try {
       await uauth.loginWithPopup().then(() => uauth.user().then(setUser));
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      console.log(accounts);
 
       setIsLogin(true);
-      setWalletAddress(user.wallet_address);
+      // setWalletAddress(user.wallet_address);
       console.log(walletAddress);
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const logoutHandler = async () => {
-    await uauth.logout();
-    console.log('Logged out with Unstoppable');
-    setIsLogin(false);
   };
 
   return (
@@ -53,23 +51,15 @@ export const TopNav = () => {
           </a>
         </div>
         <div style={{ margin: 'auto 0' }}>
-          {walletAddress ? (
-            <button
-              type="button"
-              className="nft-gradient bg-blue-400 text-sm minlg:text-lg py-2 px-6 minlg:px-8 font-poppins font-semibold text-white"
-              onClick={loginHandler}
-            >
-              Login with Unstoppable
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="nft-gradient bg-blue-400 text-sm minlg:text-lg py-2 px-6 minlg:px-8 font-poppins font-semibold text-white"
-              onClick={logoutHandler}
-            >
-              Logout
-            </button>
-          )}
+          <button
+            type="button"
+            className="nft-gradient bg-blue-400 text-sm minlg:text-lg py-2 px-6 minlg:px-8 font-poppins font-semibold text-white"
+            onClick={loginHandler}
+          >
+            {isLogin && walletAddress
+              ? 'LogedIn'
+              : 'Login With Unstoppable Domains'}
+          </button>
         </div>
       </nav>
     </>

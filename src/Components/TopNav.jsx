@@ -15,7 +15,7 @@ export const TopNav = () => {
 
   const uauth = new UAuth({
     clientID: process.env.REACT_APP_CLIENT_ID,
-    redirectUri: 'http://localhost:3000',
+    redirectUri: 'https://buy-me-coffee-with-unstoppable.vercel.app/',
     scope: 'openid wallet',
   });
 

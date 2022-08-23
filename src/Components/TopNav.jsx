@@ -5,6 +5,7 @@ import UAuth from '@uauth/js';
 export const TopNav = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [user, setUser] = useState();
+  const [walletAddress, setWalletAddress] = useState();
 
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export const TopNav = () => {
     try {
       await uauth.loginWithPopup().then(() => uauth.user().then(setUser));
       setIsLogin(true)
-      console.log(user)
+      setWalletAddress(user.wallet_address);
     } catch (error) {
       console.error(error);
     }
@@ -50,20 +51,24 @@ export const TopNav = () => {
           </a>
         </div>
         <div style={{ margin: 'auto 0' }}>
-          <button
+          {walletAddress ? (
+             <button
             type="button"
             className="nft-gradient bg-blue-400 text-sm minlg:text-lg py-2 px-6 minlg:px-8 font-poppins font-semibold text-white"
             onClick={loginHandler}
           >
             Login with Unstoppable
           </button>
-          {/* <button
+           ) : (
+         
+          <button
             type="button"
             className="nft-gradient bg-blue-400 text-sm minlg:text-lg py-2 px-6 minlg:px-8 font-poppins font-semibold text-white"
             onClick={logoutHandler}
           >
             Logout
-          </button> */}
+          </button>
+)}
         </div>
       </nav>
     </>

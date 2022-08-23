@@ -5,6 +5,7 @@ import UAuth from '@uauth/js';
 
 export const TopNav = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     // uauth();
@@ -20,9 +21,9 @@ export const TopNav = () => {
   const loginHandler = async () => {
     setIsLogin(true);
     try {
-      const authorization = await uauth.loginWithPopup();
-
-      console.log(authorization);
+      await uauth.loginWithPopup().then(() => uauth.user().then(setUser));
+      setIsLogin(true);
+      console.log(user);
     } catch (error) {
       console.error(error);
     }
@@ -56,13 +57,13 @@ export const TopNav = () => {
           >
             Login with Unstoppable
           </button>
-          {/* <button
+          <button
             type="button"
             className="nft-gradient bg-blue-400 text-sm minlg:text-lg py-2 px-6 minlg:px-8 font-poppins font-semibold text-white"
             onClick={logoutHandler}
           >
             Logout
-          </button> */}
+          </button>
         </div>
       </nav>
     </>

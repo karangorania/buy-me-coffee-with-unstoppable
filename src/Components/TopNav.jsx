@@ -51,7 +51,7 @@ export const TopNav = () => {
           </a>
         </div>
         <div style={{ margin: 'auto 0' }}>
-          {walletAddress ? (
+          {!isLogin ? (
              <button
             type="button"
             className="nft-gradient bg-blue-400 text-sm minlg:text-lg py-2 px-6 minlg:px-8 font-poppins font-semibold text-white"

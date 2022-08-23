@@ -4,6 +4,8 @@ import UAuth from '@uauth/js';
 
 export const TopNav = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState();
+
 
   useEffect(() => {
     // uauth();
@@ -15,12 +17,13 @@ export const TopNav = () => {
     redirectUri: 'http://localhost:3000',
     scope: 'openid wallet',
   });
+  
 
   const loginHandler = async () => {
     try {
-      const authorization = await uauth.loginWithPopup();
+      await uauth.loginWithPopup().then(() => uauth.user().then(setUser));
       setIsLogin(true)
-      console.log(authorization);
+      console.log(user)
     } catch (error) {
       console.error(error);
     }

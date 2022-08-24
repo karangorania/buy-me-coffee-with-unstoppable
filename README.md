@@ -1,7 +1,17 @@
 # Buy Me Coffee Web3
 
-This project is inspired by the idea of on [Buy Me Coffee](https://www.buymeacoffee.com/) but build
-on web3 platform using Polygon Mumbai Testnet chain
+- Project name:- Buy Me Coffee Web3
+- Repo:- https://github.com/karangorania/buy-me-coffee-with-unstoppable
+- Live URL with working integration:- https://buy-me-coffee-with-unstoppable.vercel.app/
+- Demo Video link:- https://www.loom.com/share/99ffc8a98dcd4805b554032af52fc1a6
+- Person of contact: @mohit @karan @shantanu
+- Contact Details:- devmohit93@gmail.com, karangoraniya@gmail.com, theshantanubharadwaj@gmail.com
+- Discord Id:-  mohitchandel#0577, KaranLuke#8439, battlehacker#3559
+- UnstoppableDomain registered account email address:- devmohit93@gmail.com, karangoraniya@gmail.com, theshantanubharadwaj@gmail.com
+
+## Feature
+
+- Login using Uns domain.
 
 Deployed Contract Address => [0x19d4666A323C8849a8B424338C55A0fcafE02767](https://polygonscan.com/address/0x19d4666A323C8849a8B424338C55A0fcafE02767)
 
